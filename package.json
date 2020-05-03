@@ -1,28 +1,41 @@
 {
-  "name": "mocha-snapshots",
-  "version": "4.2.0",
-  "description": "Snapshot testing for Mocha users",
+  "name": "mocha-vue-snapshots",
+  "version": "1.0.0",
+  "description": "Snapshot testing for Vue.js using Mocha+Chai users",
   "main": "./src/index.js",
   "scripts": {
+    "lint": "eslint **/*.js",
     "test": "mocha ./tests/**/**/*.test.js -r ./src/index -r babel-polyfill -r babel-register"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wellguimaraes/mocha-snapshots.git"
+    "url": "git+https://github.com/codejedi365/mocha-vue-snapshots.git"
   },
   "keywords": [
+    "chai",
     "mocha",
+    "pretty print",
     "snapshot",
     "regression",
     "test",
-    "testing"
+    "testing",
+    "vue",
+    "vuejs"
   ],
-  "author": "Wellington Guimaraes <wellguimaraes@gmail.com>",
+  "author": "Codejedi365 <codejedi365@gmail.com>",
+  "contributors": [
+    "Wellington Guimaraes <wellguimaraes@gmail.com>",
+    "Matyas Buczko <matyas@bulb.co.uk>",
+    "Harsil Patel <harsilspatel@gmail.com>",
+    "Christopher Jacobs <apexearth@gmail.com>",
+    "fyodor <fyodor@roamltd.com>",
+    "Andrii Kostenko <andrey@kostenko.name>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wellguimaraes/mocha-snapshots/issues"
+    "url": "https://github.com/codejedi365/mocha-vue-snapshots/issues"
   },
-  "homepage": "https://github.com/wellguimaraes/mocha-snapshots#readme",
+  "homepage": "https://github.com/codejedi365/mocha-vue-snapshots#readme",
   "dependencies": {
     "colors": "^1.3.3",
     "diff": "^3.5.0",
