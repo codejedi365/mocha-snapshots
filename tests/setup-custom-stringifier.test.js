@@ -1,9 +1,9 @@
-import React from 'react'
 import {expect} from 'chai'
 import {setup} from '../src'
 
 /**
- * The idea behind this is one could insert a custom stringifier like `flatted` for handling circular references.
+ * This provides a test to represent a user providing a custom stringifier 
+ * like `flatted` for handling circular references.
  */
 describe('setup custom stringifier', () => {
   it('should match snapshots with a custom stringify function', () => {
@@ -16,7 +16,7 @@ describe('setup custom stringifier', () => {
       }
     })
 
-    const obj = {test: 'one'}
+    const obj = {test: 'one', 'a': () => {return 0} }
     expect(obj).to.matchSnapshot()
     expect(spy).to.not.equal(obj) // Due to normalize copy.
     obj.a = 'whatever'

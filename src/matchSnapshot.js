@@ -28,7 +28,7 @@ module.exports = function (value, context) {
   if (snaps.hasOwnProperty(testName)) {
     const existingSnap = stringify(snaps[ testName ], true)
     const newSnap      = stringify(target)
-    const diffResult   = jsDiff.diffLines(existingSnap, newSnap)
+    const diffResult   = jsDiff.diffLines(existingSnap, newSnap, { newlineIsToken: true })
 
     snapDidChange = diffResult.some(it => it.removed || it.added)
 
@@ -39,7 +39,7 @@ module.exports = function (value, context) {
   }
 
   if (snapDidChange) {
-    snaps[ testName ] = target
+    snaps[ testName ] = stringify(target)
     persistSnaps(snaps, snapshotFilePath)
   }
 }

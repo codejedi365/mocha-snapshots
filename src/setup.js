@@ -1,7 +1,7 @@
 const defaultOptions = () => ({
   sanitizeClassNames: true,
   normalize: true,
-  stringifyFunction: JSON.stringify
+  stringifyFunction: null
 })
 
 const _options = defaultOptions()

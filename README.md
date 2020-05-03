@@ -1,6 +1,10 @@
 # Mocha Snapshots
 Snapshot/regression testing for using with Mocha, specially for React+Enzyme users.
 
+**Based on mocha-snapshot https://github.com/wellguimaraes/mocha-snapshots**
+
+It has incompatible difference - it uses `pretty-print` instead of JSON
+
 ## Install it
 `npm i mocha-snapshots --save`
 
