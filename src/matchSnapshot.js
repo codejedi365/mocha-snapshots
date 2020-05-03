@@ -7,6 +7,7 @@ const getNormalizedTarget = require('./getNormalizedTarget')
 const persistSnaps        = require('./persistSnaps')
 const getTestName         = require('./getTestName')
 const getOptions          = require('./setup').getOptions
+const expect              = require('chai').expect;
 
 const snapshotExtension     = '.mocha-snapshot'
 const snapshotsFolder       = '__snapshots__'
@@ -32,8 +33,8 @@ module.exports = function (value, context) {
     snapDidChange = diffResult.some(it => it.removed || it.added)
 
     if (snapDidChange && !shouldUpdateSnapshots) {
-      const output = getPrintableDiff(diffResult)
-      throw new Error('Snapshot didn\'t match' + output)
+      const output = getPrintableDiff(diffResult);
+      expect(newSnap, 'Snapshot didn\'t match' + output + '\n').to.deep.equal(existingSnap);
     }
   }
 
