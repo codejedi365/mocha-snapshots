@@ -2,6 +2,7 @@ const getOptions = require('./setup').getOptions
 const prettyFormat = require('pretty-format');
 const ReactElement = prettyFormat.plugins.ReactElement;
 const ReactTestComponent = prettyFormat.plugins.ReactTestComponent;
+const Immutable = prettyFormat.plugins.Immutable;
 
 function ignoreNulls(key, value) {
   if (value === null) return undefined
@@ -15,7 +16,7 @@ module.exports = function stringify(obj, native = false) {
     } else {
       // ignoreNulls pre-process?
       return prettyFormat(obj, {
-      	plugins: [ReactElement, ReactTestComponent],
+      	plugins: [ReactElement, ReactTestComponent, Immutable],
       });
     }
   } else {
