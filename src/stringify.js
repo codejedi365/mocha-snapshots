@@ -10,7 +10,8 @@ function ignoreNulls(key, value) {
 }
 
 module.exports = function stringify(obj, native = false) {
-  if (native) {
+  let fn = getOptions().stringifyFunction;
+  if (native || fn === null) {
   	if (typeof obj === "string") {
       return obj;
     } else {
@@ -20,7 +21,6 @@ module.exports = function stringify(obj, native = false) {
       });
     }
   } else {
-    let fn = getOptions().stringifyFunction
     if(fn === JSON.stringify) {
       return JSON.stringify(obj, ignoreNulls, '  ')
     } else {
