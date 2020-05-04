@@ -1,12 +1,14 @@
-const fs        = require('fs');
-const stringify = require('./stringify');
-const checkCI   = require('./checkCI');
+import fs from "fs";
+import { stringify } from "./stringify";
+import { checkCI } from "./checkCI";
 
-module.exports = function(snaps, snapshotFilePath) {
-  checkCI();
+module.exports = function (snaps, snapshotFilePath) {
+    checkCI();
 
-  const snapsFileContent = Object.keys(snaps)
-    .reduce((prev, curr) => `${prev}exports["${curr}"] = \`${stringify(snaps[ curr ], true).replace(/\\/g, '\\\\')}\`;\n\n`, '');
+    const snapsFileContent = Object.keys(snaps).reduce(
+        (prev, curr) => `${prev}exports["${curr}"] = \`${stringify(snaps[curr], true).replace(/\\/g, "\\\\")}\`;\n\n`,
+        ""
+    );
 
-  fs.writeFileSync(snapshotFilePath, snapsFileContent, { flag: 'w' });
+    fs.writeFileSync(snapshotFilePath, snapsFileContent, { flag: "w" });
 };
