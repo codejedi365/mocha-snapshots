@@ -1,10 +1,10 @@
 import * as jsDiff from "diff";
 import path from "path";
 import { stringify } from "./stringify";
-import getPrintableDiff from "./getPrintableDiff";
-import getExistingSnaps from "./getExistingSnaps";
-import getNormalizedTarget from "./getNormalizedTarget";
-import persistSnaps from "./persistSnaps";
+import { getPrintableDiff } from "./getPrintableDiff";
+import { getExistingSnaps } from "./getExistingSnaps";
+import { getNormalizedTarget } from "./getNormalizedTarget";
+import { persistSnaps } from "./persistSnaps";
 import { getTestName } from "./getTestName";
 import { getOptions } from "./setup";
 import { expect } from "chai";

@@ -1,4 +1,4 @@
-export const getTestName = (context) => {
+export function getTestName(context) {
     let ctxPath = [context.title];
     let stepParent = context.runnable.parent;
 
@@ -10,4 +10,4 @@ export const getTestName = (context) => {
     }
 
     return ctxPath.join("/").trim();
-};
+}

@@ -1,7 +1,7 @@
-import prependLines from "./prependLines";
+import { prependLines } from "./prependLines";
 const colors = require("colors/lib/colors");
 
-module.exports = function (diff) {
+export function getPrintableDiff(diff) {
     let printable = "\n\n";
     const prependAddition = prependLines("  + ");
     const prependRemoval = prependLines("  - ");
@@ -13,4 +13,4 @@ module.exports = function (diff) {
     });
 
     return printable;
-};
+}

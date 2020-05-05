@@ -2,7 +2,7 @@ import fs from "fs";
 import { stringify } from "./stringify";
 import { checkCI } from "./checkCI";
 
-module.exports = function (snaps, snapshotFilePath) {
+export function persistSnaps(snaps, snapshotFilePath) {
     checkCI();
 
     const snapsFileContent = Object.keys(snaps).reduce(
@@ -11,4 +11,4 @@ module.exports = function (snaps, snapshotFilePath) {
     );
 
     fs.writeFileSync(snapshotFilePath, snapsFileContent, { flag: "w" });
-};
+}

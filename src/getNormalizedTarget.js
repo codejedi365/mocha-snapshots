@@ -4,7 +4,7 @@ import { clearClassNames } from "./clearClassNames";
 import { normalize } from "./normalize";
 import { getOptions } from "./setup";
 
-module.exports = function (value) {
+export function getNormalizedTarget(value) {
     const options = getOptions();
 
     const isReactComponent = value instanceof ShallowWrapper || value instanceof ReactWrapper;
@@ -15,4 +15,4 @@ module.exports = function (value) {
     }
 
     return isReactComponent ? normalize(toJson(value)) : normalize(value);
-};
+}

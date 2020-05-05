@@ -1,7 +1,7 @@
 import fs from "fs";
 import { checkCI } from "./checkCI";
 
-module.exports = function (snapshotDir, snapshotFilePath) {
+export function getExistingSnaps(snapshotDir, snapshotFilePath) {
     let snaps = {};
 
     if (!fs.existsSync(snapshotDir)) {
@@ -13,4 +13,4 @@ module.exports = function (snapshotDir, snapshotFilePath) {
     else checkCI();
 
     return snaps;
-};
+}
