@@ -1,8 +1,5 @@
 import { getOptions } from "./setup";
 import prettyFormat from "pretty-format";
-const ReactElement = prettyFormat.plugins.ReactElement;
-const ReactTestComponent = prettyFormat.plugins.ReactTestComponent;
-const Immutable = prettyFormat.plugins.Immutable;
 
 function ignoreNulls(key, value) {
     if (value === null) return undefined;
@@ -15,6 +12,9 @@ export function stringify(obj, native = false) {
         if (typeof obj === "string") {
             return obj;
         } else {
+            const ReactElement = prettyFormat.plugins.ReactElement;
+            const ReactTestComponent = prettyFormat.plugins.ReactTestComponent;
+            const Immutable = prettyFormat.plugins.Immutable;
             // ignoreNulls pre-process?
             return prettyFormat(obj, {
                 plugins: [ReactElement, ReactTestComponent, Immutable],

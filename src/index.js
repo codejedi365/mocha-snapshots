@@ -24,4 +24,4 @@ chai.util.addMethod(chai.Assertion.prototype, "matchSnapshot", function () {
     matchSnapshot(obj, currentContext);
 });
 
-module.exports.setup = setup;
+export { setup };
