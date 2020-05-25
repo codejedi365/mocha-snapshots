@@ -1,27 +1,27 @@
-const Runnable      = require('mocha/lib/runnable')
-const chai          = require('chai')
-const matchSnapshot = require('./matchSnapshot')
-const setup         = require('./setup').setup
+const Runnable = require("mocha/lib/runnable");
+import chai from "chai";
+import { matchSnapshot } from "./matchSnapshot";
+import { setup } from "./setup";
 
 const currentContext = {
-  runnable  : null,
-  title     : '',
-  titleIndex: 0,
-}
+    runnable: null,
+    title: "",
+    titleIndex: 0,
+};
 
-const runnableRun = Runnable.prototype.run
+const runnableRun = Runnable.prototype.run;
 
 Runnable.prototype.run = function () {
-  currentContext.runnable   = this
-  currentContext.title      = this.title
-  currentContext.titleIndex = 0
+    currentContext.runnable = this;
+    currentContext.title = this.title;
+    currentContext.titleIndex = 0;
 
-  return runnableRun.apply(this, arguments)
-}
+    return runnableRun.apply(this, arguments);
+};
 
-chai.util.addMethod(chai.Assertion.prototype, 'matchSnapshot', function () {
-  const obj = chai.util.flag(this, 'object')
-  matchSnapshot(obj, currentContext)
-})
+chai.util.addMethod(chai.Assertion.prototype, "matchSnapshot", function () {
+    const obj = chai.util.flag(this, "object");
+    matchSnapshot(obj, currentContext);
+});
 
-module.exports.setup = setup
+export { setup };

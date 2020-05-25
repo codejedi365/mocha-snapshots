@@ -1,13 +1,13 @@
 const defaultOptions = () => ({
-  sanitizeClassNames: true,
-  normalize: true,
-  stringifyFunction: null
-})
+    sanitizeClassNames: true,
+    normalize: true,
+    stringifyFunction: null,
+});
 
-const _options = defaultOptions()
+const _options = defaultOptions();
 
-module.exports.setup = (options) => {
-  Object.assign(_options, defaultOptions(), options)
-}
+export const setup = (options) => {
+    Object.assign(_options, defaultOptions(), options);
+};
 
-module.exports.getOptions = () => _options
+export const getOptions = () => _options;

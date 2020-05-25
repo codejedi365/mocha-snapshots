@@ -1,18 +1,16 @@
-const fs      = require('fs');
-const checkCI = require('./checkCI');
+import fs from "fs";
+import { checkCI } from "./checkCI";
 
-module.exports = function(snapshotDir, snapshotFilePath) {
-  let snaps = {};
+export function getExistingSnaps(snapshotDir, snapshotFilePath) {
+    let snaps = {};
 
-  if (!fs.existsSync(snapshotDir)) {
-    checkCI();
-    fs.mkdirSync(snapshotDir);
-  }
+    if (!fs.existsSync(snapshotDir)) {
+        checkCI();
+        fs.mkdirSync(snapshotDir);
+    }
 
-  if (fs.existsSync(snapshotFilePath))
-    snaps = require(snapshotFilePath);
-  else
-    checkCI();
+    if (fs.existsSync(snapshotFilePath)) snaps = require(snapshotFilePath);
+    else checkCI();
 
-  return snaps;
-};
+    return snaps;
+}

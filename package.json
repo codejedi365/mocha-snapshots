@@ -1,28 +1,41 @@
 {
-  "name": "mocha-snapshots",
-  "version": "4.2.0",
-  "description": "Snapshot testing for Mocha users",
+  "name": "mocha-vue-snapshots",
+  "version": "1.0.0",
+  "description": "Snapshot testing for Vue.js using Mocha+Chai users",
   "main": "./src/index.js",
   "scripts": {
-    "test": "mocha ./tests/**/**/*.test.js -r ./src/index -r babel-polyfill -r babel-register"
+    "lint": "eslint '**/*.js'",
+    "test": "mocha ./tests/**/**/*.test.js -r ./src/index --compilers js:@babel/register"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wellguimaraes/mocha-snapshots.git"
+    "url": "git+https://github.com/codejedi365/mocha-vue-snapshots.git"
   },
   "keywords": [
+    "chai",
     "mocha",
+    "pretty print",
     "snapshot",
     "regression",
     "test",
-    "testing"
+    "testing",
+    "vue",
+    "vuejs"
   ],
-  "author": "Wellington Guimaraes <wellguimaraes@gmail.com>",
+  "author": "Codejedi365 <codejedi365@gmail.com>",
+  "contributors": [
+    "Wellington Guimaraes <wellguimaraes@gmail.com>",
+    "Matyas Buczko <matyas@bulb.co.uk>",
+    "Harsil Patel <harsilspatel@gmail.com>",
+    "Christopher Jacobs <apexearth@gmail.com>",
+    "fyodor <fyodor@roamltd.com>",
+    "Andrii Kostenko <andrey@kostenko.name>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wellguimaraes/mocha-snapshots/issues"
+    "url": "https://github.com/codejedi365/mocha-vue-snapshots/issues"
   },
-  "homepage": "https://github.com/wellguimaraes/mocha-snapshots#readme",
+  "homepage": "https://github.com/codejedi365/mocha-vue-snapshots#readme",
   "dependencies": {
     "colors": "^1.3.3",
     "diff": "^3.5.0",
@@ -30,24 +43,43 @@
     "pretty-format": "^24.8.0"
   },
   "peerDependencies": {
-    "enzyme-adapter-react-16": "^1.0.2",
-    "react-dom": "^16.0.0",
-    "react": "^16.0.0",
-    "mocha": "^4.0.1",
+    "chai": "^4.1.2",
     "enzyme": "^3.1.0",
-    "chai": "^4.1.2"
+    "enzyme-adapter-react-16": "^1.0.2",
+    "mocha": "^4.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "enzyme-adapter-react-16": "^1.0.2",
-    "enzyme": "^3.1.0",
-    "react-dom": "^16.0.0",
-    "react": "^16.0.0",
+    "@babel/core": "^7.9.6",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
+    "babel-eslint": "^10.1.0",
     "chai": "^4.1.2",
+    "core-js": "3",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
     "mocha": "^4.0.1",
-    "babel-core": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.26.0"
+    "prettier": "^2.0.5",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "usage",
+          "corejs": 3
+        }
+      ]
+    ]
   }
 }

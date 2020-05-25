@@ -1,30 +1,30 @@
-const getOptions = require('./setup').getOptions
-const prettyFormat = require('pretty-format');
-const ReactElement = prettyFormat.plugins.ReactElement;
-const ReactTestComponent = prettyFormat.plugins.ReactTestComponent;
-const Immutable = prettyFormat.plugins.Immutable;
+import { getOptions } from "./setup";
+import prettyFormat from "pretty-format";
 
 function ignoreNulls(key, value) {
-  if (value === null) return undefined
-  return value
+    if (value === null) return undefined;
+    return value;
 }
 
-module.exports = function stringify(obj, native = false) {
-  let fn = getOptions().stringifyFunction;
-  if (native || fn === null) {
-  	if (typeof obj === "string") {
-      return obj;
+export function stringify(obj, native = false) {
+    let fn = getOptions().stringifyFunction;
+    if (native || fn === null) {
+        if (typeof obj === "string") {
+            return obj;
+        } else {
+            const ReactElement = prettyFormat.plugins.ReactElement;
+            const ReactTestComponent = prettyFormat.plugins.ReactTestComponent;
+            const Immutable = prettyFormat.plugins.Immutable;
+            // ignoreNulls pre-process?
+            return prettyFormat(obj, {
+                plugins: [ReactElement, ReactTestComponent, Immutable],
+            });
+        }
     } else {
-      // ignoreNulls pre-process?
-      return prettyFormat(obj, {
-      	plugins: [ReactElement, ReactTestComponent, Immutable],
-      });
+        if (fn === JSON.stringify) {
+            return JSON.stringify(obj, ignoreNulls, "  ");
+        } else {
+            return getOptions().stringifyFunction(obj, ignoreNulls, "  ");
+        }
     }
-  } else {
-    if(fn === JSON.stringify) {
-      return JSON.stringify(obj, ignoreNulls, '  ')
-    } else {
-      return getOptions().stringifyFunction(obj, ignoreNulls, '  ')
-    }
-  }
-};
+}
